@@ -45,7 +45,5 @@ https://www.youtube.com/watch?v=d8U7ygZ48Sc - portuguese
 
 
 
-
-
 ###
 https://hackernoon.com/%EF%B8%8F-big-challenge-in-deep-learning-training-data-31a88b97b282
