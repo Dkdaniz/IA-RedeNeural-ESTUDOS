@@ -1,0 +1,17 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs": "^1.2.5",
+    "@tensorflow/tfjs-node": "^1.2.4",
+    "@tensorflow/tfjs-node-gpu": "^1.2.4",
+    "node-pre-gyp": "^0.13.0"
+  }
+}

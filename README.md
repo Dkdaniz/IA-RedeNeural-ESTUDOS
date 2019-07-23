@@ -37,7 +37,11 @@ https://towardsdatascience.com/sigmoid-neuron-learning-algorithm-explained-with-
 https://hackernoon.com/deep-learning-feedforward-neural-networks-explained-c34ae3f084f1
 https://hackernoon.com/building-a-feedforward-neural-network-from-scratch-in-python-d3526457156b
 
-### 8 - Videos
+### 8 - Supervised_learning
+
+https://en.wikipedia.org/wiki/Supervised_learning
+
+### 9 - Videos
 
 - Fazendo uma Rede Neural do Zero! #1 - FeedForward
 
