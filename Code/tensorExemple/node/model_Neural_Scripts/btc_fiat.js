@@ -33,23 +33,23 @@ for (let i = 0; i < xBtc_eur.length; i++) {
 
 console.log({btc_general});
 
-const xs = tf.tensor2d(btc_general, [btc_general.length,3]);
+const xs = tf.tensor2d(xBtc_eur, [xBtc_eur.length,1]);
 const ys = tf.tensor2d(xBtc_usd, [xBtc_usd.length,1]);
 
 //simple model:
 async function startModel() {
     const model = tf.sequential();
-    model.add(tf.layers.dense({units: 1, inputShape: [3], useBias: true}));
+    model.add(tf.layers.dense({units: 100, inputShape: [1], useBias: true}));
     model.add(tf.layers.dense({units: 1, useBias: true}));
     model.compile({optimizer: tf.train.adam(), loss: tf.losses.meanSquaredError, metrics: ['mse',],});
     return model;
 }
 
-//train();
+train();
 async function train() {
     const model = await startModel();
-    await model.fit(xs, ys,{epochs:10000}).then(() => {
-        model.predict(tf.tensor2d([ 20, 10, 31 ], [1, 3])).print();
+    await model.fit(xs, ys,{epochs:3000}).then(() => {
+        model.predict(tf.tensor2d([30], [1, 1])).print();
     });
 
     console.log('trained');
@@ -59,12 +59,12 @@ async function train() {
     console.log('saved your model');
 }
 
-imported()
+//imported()
 async function imported() {
     const model = await tf.loadLayersModel('file:///Users/dkdaniz/Documents/projetos/estudos/IA-RedeNeural-ESTUDOS/Code/tensorExemple/modelos_treinados/btc_fiat/model.json');
     //eur/brl/jpy
     //40/540
-    const result = model.predict(tf.tensor2d([ 26, 28, 30 ], [1, 3]));
+    const result = model.predict(tf.tensor2d([ 30, 18, 20 ], [1, 3]));
     const value = parseFloat(result.toString().replace('[','').replace(']','').replace(',','').replace('[','').replace(']','').replace('Tensor\n     ',''));
     console.log(value);
 }

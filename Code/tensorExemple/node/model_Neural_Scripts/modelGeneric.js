@@ -1,7 +1,7 @@
 const tf = require('@tensorflow/tfjs');
 
-var VALUES = require('../files/values.json');
-var TRANSACTION = require('../files/transaction.json');
+var VALUES = require('../../files/values.json');
+var TRANSACTION = require('../../files/transaction.json');
 
 // Optional Load the binding:
 require('@tensorflow/tfjs-node-gpu'); 
@@ -19,31 +19,31 @@ const yDate = [2,4,6,8,10,12,14];
 const xs = tf.tensor2d(xDate, [xDate.length,1]);
 const ys = tf.tensor2d(yDate, [yDate.length,1]);
  
-train();
+//train();
 
 async function train() {
-    await model.fit(xs, ys,{epochs:25000}).then(() => {
+    await model.fit(xs, ys,{epochs:10000}).then(() => {
         // Use the model to do inference on a data point the model hasn't seen before:
         // Open the browser devtools to see the output
-        const result = model.predict(tf.tensor2d([800], [1, 1]));
+        const result = model.predict(tf.tensor2d([1], [1, 1]));
         const s = result.toString().replace('[','').replace(']','').replace(',','').replace('[','').replace(']','').replace('Tensor\n     ','');
         const count = parseFloat(s);
         console.log(count);
     });
 
-    //const save = await model.save('file:///Users/dkdaniz/Documents/projetos/estudos/IA-RedeNeural-ESTUDOS/Code/tensorExemple/modelos_treinados/modelGeneric');
+    const save = await model.save('file:///Users/dkdaniz/Documents/projetos/estudos/IA-RedeNeural-ESTUDOS/Code/tensorExemple/modelos_treinados/modelGeneric');
 }
 
-//imported()
+imported()
 
-// async function imported() {
-//     const model = await tf.loadLayersModel('file:///Users/dkdaniz/Documents/projetos/estudos/IA-RedeNeural-ESTUDOS/Code/tensorExemple/modelos_treinados/modelGeneric/model.json');
+async function imported() {
+    const model = await tf.loadLayersModel('file:///Users/dkdaniz/Documents/projetos/estudos/IA-RedeNeural-ESTUDOS/Code/tensorExemple/modelos_treinados/modelGeneric/model.json');
     
-//     const result = model.predict(tf.tensor2d([50], [1, 1]));
-//     const s = result.toString().replace('[','').replace(']','').replace(',','').replace('[','').replace(']','').replace('Tensor\n     ','');
-//     const count = parseFloat(s);
-//     console.log(Math.round(count));
-// }
+    const result = model.predict(tf.tensor2d([19], [1, 1]));
+    const s = result.toString().replace('[','').replace(']','').replace(',','').replace('[','').replace(']','').replace('Tensor\n     ','');
+    const count = parseFloat(s);
+    console.log(count);
+ }
 
 
 
