@@ -64,7 +64,7 @@ async function imported() {
     const model = await tf.loadLayersModel('file:///Users/dkdaniz/Documents/projetos/estudos/IA-RedeNeural-ESTUDOS/Code/tensorExemple/modelos_treinados/btc_fiat/model.json');
     //eur/brl/jpy
     //40/540
-    const result = model.predict(tf.tensor2d([ 30, 18, 20 ], [1, 3]));
+    const result = model.predict(tf.tensor2d([ 20, 50, 10 ], [1, 3]));
     const value = parseFloat(result.toString().replace('[','').replace(']','').replace(',','').replace('[','').replace(']','').replace('Tensor\n     ',''));
     console.log(value);
 }
