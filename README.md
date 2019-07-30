@@ -47,6 +47,9 @@ https://en.wikipedia.org/wiki/Supervised_learning
 
 https://www.youtube.com/watch?v=d8U7ygZ48Sc - portuguese   
 
+### 10 - Introduction to Deep Learning - Deep Learning basics with Python
+
+https://pythonprogramming.net/introduction-deep-learning-python-tensorflow-keras/
 
 
 ###
