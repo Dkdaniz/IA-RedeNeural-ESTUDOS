@@ -1,0 +1,51 @@
+
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<title>Teste Visualizador</title>
+</head>
+<body>
+    <button onclick="chart()">Click me</button>
+    <div class="mypanel"></div>
+
+    
+</body>
+<script>
+    function chart(){
+        let real = Array();
+        let previsao = Array();
+
+        $.ajax({
+            url: "http://localhost:3000/PREV",
+            crossDomain: true,
+            dataType: 'json',
+            success: function(data) {
+                real = data
+                gerarChar('Sentimento BTC - Real','real',data)
+            },
+            type: 'GET'
+        }).then(obj =>{
+            $.ajax({
+                url: "http://localhost:3000/DATA",
+                crossDomain: true,
+                dataType: 'json',
+                success: function(data) {
+                    previsao = data
+                    gerarChar('Sentimento BTC - Previsao','Previsao',previsao)
+                },
+                type: 'GET'
+            })
+        });
+    }
+    function gerarChar(_name,_colName,_datset){
+        const series = [_colName];
+        const data = { values: [_datset], series }
+        console.log(data)
+        const surface = { name: _name, tab: 'Charts' };
+        tfvis.render.linechart(surface, data);
+    }
+</script>
+</html>
